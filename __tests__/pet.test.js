@@ -34,3 +34,18 @@ describe('walk', () => {
         expect(pet.fitness).toEqual(10);
     });
 })
+
+describe('feed', () => {
+    it('should decrease hunger by 3', function () {
+        const pet = new Pet();
+        pet.hunger = 4;
+        pet.feed();
+        expect(pet.hunger).toEqual(1);
+    });
+    it('should reduce hunger to 0', function () {
+        const pet = new Pet();
+        pet.hunger = 2;
+        pet.feed();
+        expect(pet.hunger).toEqual(0);
+    });
+})
