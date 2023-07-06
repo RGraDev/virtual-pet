@@ -2,6 +2,8 @@
 
 ## A project designed to demonstrate and provide exposure to basic OOP concepts, including Prototypes, Methods and Constructors
 
+###  As a starting point, a Pet() constructor is used to create an instance of a Pet object. There are a number of methods such as feed(), growUp(), and walk(). These methods alter the values of various properties
+
 ### Overview of Files
 
 ### src/pet.js<b>
