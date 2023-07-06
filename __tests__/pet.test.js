@@ -1,5 +1,5 @@
-const Pet = require("../src/pet.js");
-const { expect } = require("@jest/globals");
+const Pet = require("../src/pet_new.js");
+const { expect, describe, it } = require("@jest/globals");
 
 describe("constructor", () => {
   it("returns an object", () => {
