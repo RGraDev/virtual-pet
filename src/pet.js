@@ -2,12 +2,14 @@ const MAX_FITNESS = 10;
 const MIN_HUNGER = 0;
 const FITNESS_THRESHOLD = 5;
 const HUNGER_THRESHOLD = 3;
+const NOT_ALIVE_ERROR = "Your pet is no longer alive :(";
 
 function Pet(name) {
   this.name = name;
   this.age = 0;
   this.hunger = 0;
   this.fitness = 10;
+  this.children = [];
 }
 
 Pet.prototype = {
@@ -18,7 +20,7 @@ Pet.prototype = {
 
 Pet.prototype.growUp = function () {
   if (!this.isAlive) {
-    throw new Error("Your pet is no longer alive :(");
+    throw new Error(NOT_ALIVE_ERROR);
   }
 
   this.age++;
@@ -28,7 +30,7 @@ Pet.prototype.growUp = function () {
 
 Pet.prototype.walk = function () {
   if (!this.isAlive) {
-    throw new Error("Your pet is no longer alive :(");
+    throw new Error(NOT_ALIVE_ERROR);
   }
 
   if (this.fitness + 4 > MAX_FITNESS) {
@@ -40,7 +42,7 @@ Pet.prototype.walk = function () {
 
 Pet.prototype.feed = function () {
   if (!this.isAlive) {
-    throw new Error("Your pet is no longer alive :(");
+    throw new Error(NOT_ALIVE_ERROR);
   }
 
   if (this.hunger - 3 < MIN_HUNGER) {
@@ -52,7 +54,7 @@ Pet.prototype.feed = function () {
 
 Pet.prototype.checkUp = function () {
   if (!this.isAlive) {
-    return "Your pet is no longer alive :(";
+    return NOT_ALIVE_ERROR;
   }
 
   if (this.hunger >= HUNGER_THRESHOLD && this.fitness <= FITNESS_THRESHOLD) {
@@ -64,6 +66,14 @@ Pet.prototype.checkUp = function () {
   } else {
     return "I feel great!";
   }
+};
+
+Pet.prototype.adoptChild = function (child) {
+  if (!this.isAlive) {
+    throw new Error(NOT_ALIVE_ERROR);
+  }
+
+  this.children.push(child);
 };
 
 module.exports = Pet;
