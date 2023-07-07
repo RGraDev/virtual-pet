@@ -2,8 +2,10 @@ const MAX_FITNESS = 10;
 const MIN_HUNGER = 0;
 const FITNESS_THRESHOLD = 5;
 const HUNGER_THRESHOLD = 3;
+const NOT_ALIVE_ERROR = "Your pet is no longer alive :(";
 
 class Pet {
+  children = [];
   constructor(name) {
     this.name = name;
     this.age = 0;
@@ -17,7 +19,7 @@ class Pet {
 
   growUp() {
     if (!this.isAlive) {
-      throw new Error("Your pet is no longer alive :(");
+      throw new Error(NOT_ALIVE_ERROR);
     }
 
     this.age++;
@@ -27,7 +29,7 @@ class Pet {
 
   walk() {
     if (!this.isAlive) {
-      throw new Error("Your pet is no longer alive :(");
+      throw new Error(NOT_ALIVE_ERROR);
     }
 
     if (this.fitness + 4 > MAX_FITNESS) {
@@ -39,7 +41,7 @@ class Pet {
 
   feed() {
     if (!this.isAlive) {
-      throw new Error("Your pet is no longer alive :(");
+      throw new Error(NOT_ALIVE_ERROR);
     }
 
     if (this.hunger - 3 < MIN_HUNGER) {
@@ -51,7 +53,7 @@ class Pet {
 
   checkUp() {
     if (!this.isAlive) {
-      return "Your pet is no longer alive :(";
+      return NOT_ALIVE_ERROR;
     }
 
     if (this.hunger >= HUNGER_THRESHOLD && this.fitness <= FITNESS_THRESHOLD) {
@@ -63,6 +65,14 @@ class Pet {
     } else {
       return "I feel great!";
     }
+  }
+
+  adoptChild(child) {
+    if (!this.isAlive) {
+      throw new Error(NOT_ALIVE_ERROR);
+    }
+
+    this.children.push(child);
   }
 }
 

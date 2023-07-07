@@ -109,3 +109,15 @@ describe("isAlive", () => {
     expect(pet.isAlive).toEqual(true);
   });
 });
+
+describe("adoptChild", () => {
+  it("should return array of children", function () {
+    const parent = new Pet("Dave");
+    const child = new Pet("Amelia");
+
+    parent.adoptChild(child);
+
+    expect(parent.children).toBeInstanceOf(Array);
+    expect(parent.children[0]).toBe(child);
+  });
+});
