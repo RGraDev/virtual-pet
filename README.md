@@ -17,7 +17,12 @@ but makes use of the class syntax available in ES6
 ### __ tests __ /pet_test.js
 This file contains a suite of tests written using Jest. By default, these tests
 run using the pet_new.js code. You can verify the logic in the pet.js file 
-also passes the tests by changing: 
+also passes the tests by changing the require statement at the top of the test suite from: 
 
-``` const Pet = require("../src/pet_new.js"); ```
-to ``` const Pet = require("../src/pet.js");``` 
+```javascript
+const Pet = require("../src/pet_new.js"); 
+```
+to 
+```javascript
+const Pet = require("../src/pet.js");
+``` 
